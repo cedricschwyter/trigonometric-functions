@@ -39,29 +39,29 @@ public void draw(){
 
   background(0);
   stroke(255);
-  strokeWeight(1);
+  strokeWeight(3);
   ellipse(WIDTH / 2, HEIGHT / 2, WIDTH / 2, HEIGHT / 2);
   strokeWeight(1);
   line(0, HEIGHT / 2, WIDTH, HEIGHT / 2);
   line(WIDTH / 2, 0, WIDTH / 2, HEIGHT);
-  line(WIDTH / 2 + r, 0, WIDTH / 2 + r, HEIGHT);
-  line(0, HEIGHT / 2 + r, WIDTH, HEIGHT / 2 + r);
-  line(WIDTH / 2 - r, 0, WIDTH / 2 - r, HEIGHT);
-  line(0, HEIGHT / 2 - r, WIDTH, HEIGHT / 2 - r);
-  stroke(255);
-  strokeWeight(1);
+  //line(WIDTH / 2 + r, 0, WIDTH / 2 + r, HEIGHT);
+  //line(0, HEIGHT / 2 + r, WIDTH, HEIGHT / 2 + r);
+  //line(WIDTH / 2 - r, 0, WIDTH / 2 - r, HEIGHT);
+  //line(0, HEIGHT / 2 - r, WIDTH, HEIGHT / 2 - r);
+  stroke(23, 166, 255);
+  strokeWeight(20);
   fill(255);
   ellipse(WIDTH / 2 + r * cos(angle), HEIGHT / 2 + r * sin(angle), 10, 10);
   stroke(255);
-  strokeWeight(1);
+  strokeWeight(3);
   stroke(255, 0, 0);
   line(WIDTH / 2 + r * cos(angle), HEIGHT / 2, WIDTH / 2, HEIGHT / 2);
   stroke(0, 255, 0);
   line(WIDTH / 2, HEIGHT / 2 + r * sin(angle), WIDTH / 2, HEIGHT / 2);
-  strokeWeight(1);
+  strokeWeight(10);
   stroke(23, 166, 255);
   line(WIDTH / 2, HEIGHT / 2, (WIDTH / 2) + r * cos(angle), (HEIGHT / 2) + r * sin(angle));
-  strokeWeight(1);
+  strokeWeight(3);
   stroke(0, 0, 255);
   if(cos(angle) > 0) {
     
@@ -87,7 +87,7 @@ public void draw(){
   
   }
   
-  strokeWeight(1);
+  strokeWeight(3);
   stroke(0, 255, 0);
   fill(255);
   
@@ -105,9 +105,9 @@ public void draw(){
   
   }
   
-  if(sinGraph.size() > WIDTH / 4) {
+  if(sinGraph.size() > WIDTH) {
   
-    sinGraph.remove(WIDTH / 4);
+    sinGraph.remove(WIDTH);
   
   }
  
@@ -127,14 +127,14 @@ public void draw(){
   
   }
   
-  if(cosGraph.size() > HEIGHT / 4) {
+  if(cosGraph.size() > HEIGHT) {
   
-    cosGraph.remove(HEIGHT / 4);
+    cosGraph.remove(HEIGHT);
   
   }
     
   tanGraph.add(0, new PVector(WIDTH / 2 - offset, (HEIGHT / 2) + (r * tan(angle))));
-  
+
   stroke(0, 0, 255);
   
   for(int i = 0; i < tanGraph.size(); i++) {
@@ -146,6 +146,10 @@ public void draw(){
       if(!((vec.y < 0 && next.y > 0) || (vec.y > 0 && next.y < 0))) {
         
         line(vec.x + offset, vec.y, next.x + offset, next.y);
+        
+      } else {
+      
+        line(next.x + offset, next.y, next.x + offset, -10);
       
       }
       
@@ -153,9 +157,9 @@ public void draw(){
   
   }
     
-  if(tanGraph.size() > WIDTH / 4) {
+  if(tanGraph.size() > WIDTH) {
   
-    tanGraph.remove(WIDTH / 4);
+    tanGraph.remove(WIDTH);
   
   }
   
@@ -176,8 +180,8 @@ public void draw(){
   stroke(255);
   strokeWeight(1);
   
-  angle -= 0.03f;
-  offset += 2;
+  angle -= 0.015f;
+  offset += 1;
 
 }
   public void settings() {  size(1000, 1000); }

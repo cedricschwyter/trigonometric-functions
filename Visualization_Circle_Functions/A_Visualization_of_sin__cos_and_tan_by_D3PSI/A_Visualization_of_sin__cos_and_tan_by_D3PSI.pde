@@ -89,9 +89,9 @@ void draw(){
   
   }
   
-  if(sinGraph.size() > WIDTH / 4) {
+  if(sinGraph.size() > WIDTH) {
   
-    sinGraph.remove(WIDTH / 4);
+    sinGraph.remove(WIDTH);
   
   }
  
@@ -111,9 +111,9 @@ void draw(){
   
   }
   
-  if(cosGraph.size() > HEIGHT / 4) {
+  if(cosGraph.size() > HEIGHT) {
   
-    cosGraph.remove(HEIGHT / 4);
+    cosGraph.remove(HEIGHT);
   
   }
     
@@ -164,7 +164,7 @@ void draw(){
   stroke(255);
   strokeWeight(1);
   
-  angle -= 0.06;
-  offset += 2;
+  angle -= 0.015;
+  offset += 1;
 
 }
