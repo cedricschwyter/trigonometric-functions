@@ -316,6 +316,6 @@ void draw(){
   strokeWeight(1);
   
   angle -= 0.0075 * PI * 0.5;
-  offset += 2;
+  offset += 0.5;
 
 }
