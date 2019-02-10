@@ -3,6 +3,12 @@ float offset = 20;
 
 boolean simpleGraphs = true;
 boolean extendedGraphs = true;
+boolean sin = true;
+boolean cos = true;
+boolean tan = true;
+boolean sec = true;
+boolean csc = true;
+boolean cot = true;
 
 static final int WIDTH = 1000;
 static final int HEIGHT = WIDTH;
@@ -125,7 +131,11 @@ void draw(){
     if(i + 1 < sinGraph.size()) {
       
       PVector next = sinGraph.get(i + 1);
-      if(simpleGraphs){line(vec.x + offset, vec.y, next.x + offset, next.y);}
+      if(simpleGraphs || sin) {
+      
+        line(vec.x + offset, vec.y, next.x + offset, next.y);
+      
+      }
       
     }
   
@@ -147,7 +157,11 @@ void draw(){
     if(i + 1 < cosGraph.size()) {
       
       PVector next = cosGraph.get(i + 1);
-      if(simpleGraphs){line(vec.x, vec.y - offset, next.x, next.y - offset);}
+      if(simpleGraphs || cos) {
+      
+        line(vec.x, vec.y - offset, next.x, next.y - offset);
+      
+      }
       
     }
   
@@ -171,11 +185,19 @@ void draw(){
       PVector next = tanGraph.get(i + 1);
       if(!((vec.y < 0 && next.y > 0) || (vec.y > 0 && next.y < 0))) {
         
-        if(simpleGraphs){line(vec.x + offset, vec.y, next.x + offset, next.y);}
+        if(simpleGraphs || tan) {
+        
+          line(vec.x + offset, vec.y, next.x + offset, next.y);
+        
+        }
         
       } else {
       
-        if(simpleGraphs){line(next.x + offset, next.y, next.x + offset, -10);}
+        if(simpleGraphs || tan) {
+        
+          line(next.x + offset, next.y, next.x + offset, -10);
+        
+        }
       
       }
       
@@ -226,15 +248,27 @@ void draw(){
       PVector next = secGraph.get(i + 1);
       if(!((vec.x < WIDTH / 2 && next.x > WIDTH / 2) || (vec.x > WIDTH / 2 && next.x < WIDTH / 2))) {
       
-        if(extendedGraphs){line(vec.x, vec.y - offset, next.x, next.y - offset);}
+        if(extendedGraphs || sec) {
+        
+          line(vec.x, vec.y - offset, next.x, next.y - offset);
+        
+        }
       
       } else if((vec.x < WIDTH / 2 && next.x > WIDTH / 2)) {
       
-        if(extendedGraphs){line(vec.x, vec.y - offset, -10, vec.y - offset);}
+        if(extendedGraphs || sec) {
+        
+          line(vec.x, vec.y - offset, -10, vec.y - offset);
+        
+        }
       
       } else if((vec.x > WIDTH / 2 && next.x < WIDTH / 2)) {
       
-        if(extendedGraphs){line(next.x, next.y - offset, -10, vec.y - offset);}
+        if(extendedGraphs || sec) {
+        
+          line(next.x, next.y - offset, -10, vec.y - offset);
+        
+        }
       
       }
       
@@ -262,12 +296,19 @@ void draw(){
       PVector next = cscGraph.get(i + 1);
       if(!((vec.y < HEIGHT / 2 && next.y > HEIGHT / 2) || (vec.y > HEIGHT / 2 && next.y < HEIGHT / 2)) && !(sin(angle) == 0)){
       
-        if(extendedGraphs){line(vec.x + offset, vec.y, next.x + offset, next.y);}
+        if(extendedGraphs || csc) {
         
+          line(vec.x + offset, vec.y, next.x + offset, next.y);
+        
+        }
       
       } else {
       
-        if(extendedGraphs){line(next.x + offset, next.y, vec.x + offset - 100000, -10);}
+        if(extendedGraphs || csc) {
+        
+          line(next.x + offset, next.y, vec.x + offset - 100000, -10);
+        
+        }
       
       }
       
@@ -293,11 +334,19 @@ void draw(){
       PVector next = cotGraph.get(i + 1);
       if(!((vec.x < 0 && next.x > 0) || (vec.x > 0 && next.x < 0))) {
         
-        if(extendedGraphs){line(vec.x, vec.y - offset, next.x, next.y - offset);}
+        if(extendedGraphs || cot) {
+        
+          line(vec.x, vec.y - offset, next.x, next.y - offset);
+        
+        }
         
       } else {
       
-        if(extendedGraphs){line(vec.x, vec.y - offset, -1000, next.y - offset);}
+        if(extendedGraphs  || cot) {
+        
+          line(vec.x, vec.y - offset, -1000, next.y - offset);
+        
+        }
       
       }
       
