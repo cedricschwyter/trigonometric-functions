@@ -1,5 +1,9 @@
-float angle = 2 * PI;
+float angle = 0;
 float offset = 20;
+
+int iteration = 1;
+
+int iterationCount = 0;
 
 boolean simpleGraphs = true;
 boolean extendedGraphs = true;
@@ -21,6 +25,13 @@ ArrayList< PVector > tanGraph = new ArrayList< PVector >();
 ArrayList< PVector > secGraph = new ArrayList< PVector >();
 ArrayList< PVector > cscGraph = new ArrayList< PVector >();
 ArrayList< PVector > cotGraph = new ArrayList< PVector >();
+
+int sinOpacity = 50;
+int cosOpacity = 50;
+int tanOpacity = 50;
+int secOpacity = 50;
+int cscOpacity = 50;
+int cotOpacity = 50;
 
 void setup(){
 
@@ -46,9 +57,9 @@ void draw(){
   ellipse(WIDTH / 2 + r * cos(angle), HEIGHT / 2 + r * sin(angle), 10, 10);    // Point on circle
   stroke(255);
   strokeWeight(3);
-  stroke(255, 0, 0);
+  stroke(255, 0, 0, cosOpacity);
   line(WIDTH / 2 + r * cos(angle), HEIGHT / 2, WIDTH / 2, HEIGHT / 2);      // Cosine
-  stroke(0, 255, 0);
+  stroke(0, 255, 0, sinOpacity);
   line(WIDTH / 2, HEIGHT / 2 + r * sin(angle), WIDTH / 2, HEIGHT / 2);      // Sine
   strokeWeight(10);
   stroke(23, 166, 255);
@@ -56,7 +67,7 @@ void draw(){
   strokeWeight(1);
   stroke(255);
   line((WIDTH / 2) * 1, ((HEIGHT / 2) + r * (1 / sin(angle))) * 1, ((WIDTH / 2) + r * (1 / cos(angle))) * 1, (HEIGHT / 2) * 1);    // Tangent to circle on point
-  stroke(200, 100, 50);
+  stroke(200, 100, 50, cotOpacity);
   strokeWeight(3);
   if(sin(angle) < 0) {    // Cotangent
   
@@ -67,7 +78,7 @@ void draw(){
     line(WIDTH / 2, HEIGHT / 2 + r, WIDTH / 2 + r * 1 / tan(angle), HEIGHT / 2 + r);
   
   }
-  stroke(0, 0, 255);
+  stroke(0, 0, 255, tanOpacity);
   strokeWeight(3);
     
   if(cos(angle) > 0) {        // Tangent
@@ -80,11 +91,11 @@ void draw(){
       
   }
   
-  stroke(121, 121, 212);
+  stroke(121, 121, 212, secOpacity);
   strokeWeight(3);
   
   line(WIDTH / 2 + r * cos(angle), HEIGHT / 2, WIDTH / 2 + r * 1 / cos(angle), HEIGHT / 2);    // Secant  
-  stroke(212, 121, 121);
+  stroke(212, 121, 121, cscOpacity);
   line(WIDTH / 2, HEIGHT / 2 + r * sin(angle), WIDTH / 2, HEIGHT / 2 + r * 1 / sin(angle));    // Cosecant
   
   strokeWeight(1);
@@ -120,7 +131,7 @@ void draw(){
   }
   
   strokeWeight(3);
-  stroke(0, 255, 0);
+  stroke(0, 255, 0, sinOpacity);
   fill(255);
   
   sinGraph.add(0, new PVector(WIDTH / 2 - offset, HEIGHT / 2 + r * sin(angle)));
@@ -149,7 +160,7 @@ void draw(){
  
   cosGraph.add(0, new PVector(WIDTH / 2 + r * cos(angle), HEIGHT / 2 + offset));
   
-  stroke(255, 0, 0);
+  stroke(255, 0, 0, cosOpacity);
   
   for(int i = 0; i < cosGraph.size(); i++) {
     
@@ -175,7 +186,7 @@ void draw(){
     
   tanGraph.add(0, new PVector(WIDTH / 2 - offset, (HEIGHT / 2) + (r * tan(angle))));
 
-  stroke(0, 0, 255);
+  stroke(0, 0, 255, tanOpacity);
   
   for(int i = 0; i < tanGraph.size(); i++) {
     
@@ -237,7 +248,7 @@ void draw(){
   secGraph.add(0, new PVector(WIDTH / 2 + (r * 1 / cos(angle)), (HEIGHT / 2) + offset));
  
   strokeWeight(3);
-  stroke(121, 121, 212);
+  stroke(121, 121, 212, secOpacity);
   
   for(int i = 0; i < secGraph.size(); i++) {
     
@@ -285,7 +296,7 @@ void draw(){
   cscGraph.add(0, new PVector(WIDTH / 2  - offset, (HEIGHT / 2) + (r * 1 / sin(angle))));
  
   strokeWeight(3);
-  stroke(212, 121, 121);
+  stroke(212, 121, 121, cscOpacity);
   
   for(int i = 0; i < cscGraph.size(); i++) {
     
@@ -324,7 +335,7 @@ void draw(){
   
   cotGraph.add(0, new PVector(WIDTH / 2 + r * 1 / tan(angle), (HEIGHT / 2) + offset));
 
-  stroke(200, 100, 50);
+  stroke(200, 100, 50, cotOpacity);
   
   for(int i = 0; i < cotGraph.size(); i++) {
     
@@ -364,7 +375,43 @@ void draw(){
   stroke(255);
   strokeWeight(1);
   
-  angle -= 0.0075 * PI * 0.5;
+  angle -= PI / 60 * 0.2;
   offset += 0.5;
-
+  
+  iteration++;
+  iterationCount = iteration / 601;
+  
+  sinOpacity = 50;
+  cosOpacity = 50;
+  tanOpacity = 50;
+  secOpacity = 50;
+  cscOpacity = 50;
+  cotOpacity = 50;
+  
+  if(iterationCount % 6 == 0) {
+  
+    sinOpacity = 255;
+  
+  } else if(iterationCount % 6 == 1) {
+  
+    cosOpacity = 255;
+  
+  } else if(iterationCount % 6 == 2) {
+  
+    tanOpacity = 255;
+  
+  } else if(iterationCount % 6 == 3) {
+  
+    secOpacity = 255;
+  
+  } else if(iterationCount % 6 == 4) {
+  
+    cscOpacity = 255;
+  
+  } else if(iterationCount % 6 == 5) {
+  
+    cotOpacity = 255;
+  
+  }
+  
 }
